@@ -114,7 +114,7 @@ export namespace objectUtil {
     T extends object,
     R extends keyof T = requiredKeys<T>
     // O extends keyof T = optionalKeys<T>
-  > = Pick<Required<T>, R> & Partial<T>;
+  > = Pick<Required<T>, R> & Pick<Partial<T>, Exclude<keyof T, R>>;
   //  = { [k in O]?: T[k] } & { [k in R]: T[k] };
 
   export type identity<T> = T;
